@@ -88,8 +88,12 @@ function nextLocation() {
   getRandomLocation();
 }
 async function getRandomLocation() {
+    if (Math.random() > 0.8){
+    url = "https://raw.githubusercontent.com/goofygooeber/sigmaguessr.github.io/refs/heads/main/goon.json";
+  } else {
+      url = "https://raw.githubusercontent.com/codergautam/worldguessr/refs/heads/master/data/world-main.json";
   let data = await fetch(
-    "https://raw.githubusercontent.com/codergautam/worldguessr/refs/heads/master/data/world-main.json"
+    url
   );
   let text = await data.text();
   const lines = text.split("},{");
@@ -100,10 +104,7 @@ async function getRandomLocation() {
 
   secretLat = lat;
   secretLng = lng;
-  if (Math.random() > 0.8){
-    secretLat = 37.2408785;
-    secretLng = -121.9278765;
-  }
+
 
   url = `https://www.google.com/maps/embed/v1/streetview?location=${secretLat},${secretLng}&key=AIzaSyA_t5gb2Mn37dZjhsaJ4F-OPp1PWDxqZyI&fov=100&language=en&heading=307`;
   document.getElementById("MainMap").src = url;
