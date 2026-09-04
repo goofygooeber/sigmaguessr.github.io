@@ -88,10 +88,12 @@ function nextLocation() {
   getRandomLocation();
 }
 async function getRandomLocation() {
+  let url;
     if (Math.random() > 0.8){
     url = "https://raw.githubusercontent.com/goofygooeber/sigmaguessr.github.io/refs/heads/main/goon.json";
   } else {
-      url = "https://raw.githubusercontent.com/codergautam/worldguessr/refs/heads/master/data/world-main.json";
+    url = "https://raw.githubusercontent.com/codergautam/worldguessr/refs/heads/master/data/world-main.json";
+  }
   let data = await fetch(
     url
   );
